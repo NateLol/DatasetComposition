@@ -179,9 +179,11 @@ def parse_args():
 
 def find_file(args, dirname, files):
     if '.' in files[0]:
+        print('Processing Folder:{}'.format(dirname))
         imfiles = glob.glob(os.path.join(dirname,'*.jpg'))
-    	for imfile in imfiles:
-            demo(args.sess, args.net, imfile)
+        imfiles.sort()
+    	for i in progressbar.progressbar(range(len(imfiles))):
+            demo(args.sess, args.net, imfiles[i])
 
 
 if __name__ == '__main__':
