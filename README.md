@@ -25,7 +25,13 @@ python video2image_sep.py --video /path/to/video/root --image /path/to/image/roo
 ```
 
 ## Image Checking
-1. Check all images for each video clip to see if the cropping is performed right
+1. `fpscount.py` will help check all images for each video clip to see if the cropping is performed right(this might not be supported by python3)
+```sh
+python fpscount.py --image /path/to/image/root --file /file/name(default:imagecounts.txt)
+```
+
+within generated `file` default under `path/to/image/root`, one can estimate whether image numder is right according to its corresponding time period
+
 2. if whole video is cropped incorrectly, use `fps.py`:
 ```sh
 python fps.py --video /path/to/video.mp4(ts) --stride 1
@@ -64,3 +70,9 @@ Zip according to date and distribute for labeling.
 python xml2pedestrain.py --image /path/to/target/image/root --id id --target target/folder/name(default:dataset)
 ```
 
+## labeling summary
+`labelsum.py` will summarize the labeling output.
+```sh
+python labelsum.py --root /path/to/image/root --id id
+```
+It will output two files under `/path/to/image/root`, namely `counts.txt` and `results.txt`. `counts.txt` tells ids captures by different numbers of cameras, and `results.txt` tells the detailed information for each id.
