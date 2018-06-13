@@ -54,11 +54,11 @@ python 8_rename_part.py -folder /path/to/video
 
 
 ## Faster-RCNN
-`demo_batch_new.py` will traverse all images under `image` and create xml files storing all results accordingly.
+`9_demo_batch_new.py` will traverse all images under `image` and create xml files storing all results accordingly.
 ```sh
 cd $Faster-RCNN$/tools
 source activate fasterrcnn
-python demo_batch_new.py --model ../model/VGGnet_fast_rcnn_iter_70000.ckpt --image /path/to/target/image/root 
+python 9_demo_batch_new.py --model ../model/VGGnet_fast_rcnn_iter_70000.ckpt --image /path/to/target/image/root 
 ```
 
 ## Labeling Distribution
@@ -66,23 +66,23 @@ Zip according to date and distribute for labeling.
 
 
 ## xml to pedestrains
-`xml2pedestrain.py` will traverse all xml files collected labeling by `id`and extract pedestrains
+`10_xml2pedestrain.py` will traverse all xml files collected labeling by `id`and extract pedestrains
 ```sh
-python xml2pedestrain.py --image /path/to/target/image/root --id id --target target/folder/name(default:dataset)
+python 10_xml2pedestrain.py --image /path/to/target/image/root --id id --target target/folder/name(default:dataset)
 ```
 
 
 ## labeling summary
-`labelsum.py` will summarize the labeling output.
+`11_labelsum.py` will summarize the labeling output.
 ```sh
-python labelsum.py --root /path/to/image/root --id id
+python 11_labelsum.py --root /path/to/image/root --id id
 ```
 It will output two files under `/path/to/image/root`, namely `counts.txt` and `results.txt`. `counts.txt` tells ids captures by different numbers of cameras, and `results.txt` tells the detailed information for each id.
 
 ## Resizing
 !IT WILL REPLACE ORIGINAL IMAGE, PLEASE BACK UP FIRST!
-`resize.py` will resize all images under `path/to/image/root` to a fixed size, default to 64*128
+`12_resize.py` will resize all images under `path/to/image/root` to a fixed size, default to 64*128
 ```sh
-python resize.py --root /path/to/image/root --id id 
+python 12_resize.py --root /path/to/image/root --id id 
 ```
 This may see to an update for imporved experinece, avoid using for now!
