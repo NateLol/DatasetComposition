@@ -178,11 +178,10 @@ def parse_args():
     return args
 
 def find_file(args, dirname, files):
-    files.sort()
-    for file in files:
-        file_path=os.path.join(dirname, file)
-        if os.path.isfile(file_path) and file_path.endswith('jpg'):
-            demo(args.sess, args.net, file_path)
+    if '.' in files[0]:
+        imfiles = glob.glob(os.path.join(dirname,'*.jpg'))
+    	for imfile in imfiles:
+            demo(args.sess, args.net, imfile)
 
 
 if __name__ == '__main__':
