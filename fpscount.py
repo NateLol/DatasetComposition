@@ -18,11 +18,13 @@ def find_file(args, dirname, files):
             f.write('{} has {} images\n'.format(dirname, len(files)))
 
 
-
+def main(image, file):
+    filepath = os.path.join(image, file)
+    if os.path.exists(filepath):
+        os.remove(filepath)
+    os.path.walk(image, find_file, filepath)
 
 if __name__ == '__main__':
     args = parse_args()
-    filepath = os.path.join(args.image, args.file)
-    if os.path.exists(filepath):
-        os.remove(filepath)
-    os.path.walk(args.image, find_file, filepath)
+    main(args.image, args.file)
+

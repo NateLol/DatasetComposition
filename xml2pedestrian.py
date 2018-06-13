@@ -20,7 +20,7 @@ def cutting(im, shapes, name):
         c=c+1
 
 
-def cutout(xml_name, id, target):
+def cutout(xml_name, id, folderpath):
     im = cv2.imread(xml_name[0:-3]+'jpg')
     if im is None:
         return
@@ -45,7 +45,7 @@ def cutout(xml_name, id, target):
         if None in shape:
             return
         im_tmp = im[shape[2]:shape[3], shape[0]:shape[1]]
-        id_folder = os.path.join(target, name)
+        id_folder = os.path.join(folderpath, name)
         if not os.path.exists(id_folder):
             os.mkdir(id_folder)
         index = len(glob.glob(id_folder+'/*jpg'))
@@ -65,18 +65,16 @@ def parse_args():
     args = parser.parse_args()
     return args
 
-
-if __name__ =='__main__':
-    args = parse_args()
-    target = os.path.join(args.root, args.target)
-    if not os.path.exists(target):
-        os.mkdir(target)
-    cams = glob.glob(os.path.join(args.root, '*'))
+def main(root, id, target):
+    targetfolder = os.path.join(root, target)
+    if not os.path.exists(targetfolder):
+        os.makedirs(targetfolder)
+    cams = glob.glob(os.path.join(root, '*'))
     cams.sort()
     for cam in cams:
         if not os.path.isdir(cam):
             continue
-        if cam.split('/')[-1] == args.target:
+        if cam.split('/')[-1] == target:
             continue
         periods = glob.glob(os.path.join(cam, '*'))
         periods.sort()
@@ -87,4 +85,9 @@ if __name__ =='__main__':
             xmls = glob.glob(os.path.join(period, '*.xml'))
             xmls.sort()
             for i in progressbar.progressbar(range(len(xmls))):
-                cutout(xmls[i], args.id, target)
+                cutout(xmls[i], id, targetfolder)
+
+
+if __name__ =='__main__':
+    args = parse_args()
+    main(args.root, args.id, args.target)
