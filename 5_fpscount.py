@@ -3,10 +3,10 @@ import argparse,os,shutil
 
 def parse_args():
     """Parse input arguments."""
-    parser = argparse.ArgumentParser(description='Video cropping to images with exact same dirs')
+    parser = argparse.ArgumentParser(description='Counting images for each video clip')
     parser.add_argument('--image', dest='image', required=True, help='image root path',
                         default='')
-    parser.add_argument('--file',dest='file', help='the stride by which frames are cropped', default='imagecounts.txt')
+    parser.add_argument('--file',dest='file', help='the file storing the results', default='imagecounts.txt')
 
     args = parser.parse_args()
     return args

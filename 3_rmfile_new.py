@@ -2,9 +2,9 @@ import os, glob, shutil,argparse
 
 def parse_args():
     """Parse input arguments."""
-    parser = argparse.ArgumentParser(description='Video cropping')
-    parser.add_argument('--source', dest='root', required=True, help='cropping videos into frames',)
-    parser.add_argument('--target',dest='target', help='the stride by which frames are cropped', default='' )
+    parser = argparse.ArgumentParser(description='Moving videos from cam-time to date-lane-cam-time')
+    parser.add_argument('--source', dest='root', required=True, help='source video root')
+    parser.add_argument('--target',dest='target', required=True, help='target video root')
     args = parser.parse_args()
     return args
 

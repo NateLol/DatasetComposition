@@ -20,7 +20,7 @@ def cropping(video, image_folder):
 
 def parse_args():
     """Parse input arguments."""
-    parser = argparse.ArgumentParser(description='Video cropping to images with exact same dirs')
+    parser = argparse.ArgumentParser(description='Video cropping to images into separate but exact same dirs')
     parser.add_argument('--video', dest='video', required=True, help='video root path',
                         default='')
     parser.add_argument('--image', dest='image', required=True, help='image root path',

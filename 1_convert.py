@@ -3,7 +3,7 @@ import argparse,os,glob,shutil
 
 def parse_args():
     """Parse input arguments."""
-    parser = argparse.ArgumentParser(description='Faster R-CNN demo')
+    parser = argparse.ArgumentParser(description='Renaming and arranging YUSHI videos to be compatibale for subsequent processing')
     parser.add_argument('--yushi', dest='yushi', help='path to yushi video root',
                         required=True)
     args = parser.parse_args()
@@ -24,7 +24,7 @@ if __name__ == '__main__':
                                                                               period[15:19],int(period[19:21]), int(period[21:23]), period[23:25], period[25:27], period[27:29])
         if not os.path.exists(targetfolder):
             os.mkdir(targetfolder)
-        shutil.move(video, os.path.join(targetfolder,rename+'.ts'))
+        shutil.move(video, os.path.join(targetfolder, rename + '.ts'))
     if not os.listdir(args.yushi):
         os.rmdir(args.yushi)
         #nate=1

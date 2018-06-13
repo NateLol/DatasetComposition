@@ -14,9 +14,8 @@ def read_list(filename):
 
 def parse_args():
     """Parse input arguments."""
-    parser = argparse.ArgumentParser(description='folder renaming')
-    parser.add_argument('--root', dest='root', required=True, help='renaming the folders to defined names',
-                        default='')
+    parser = argparse.ArgumentParser(description='Camera folders renaming')
+    parser.add_argument('--root', dest='root', required=True, help='renaming the folders to pre-defined names')
     parser.add_argument('--listfile', dest='listfile', help='the pre-defined names for all cameras', default='Camlist.txt')
 
     args = parser.parse_args()

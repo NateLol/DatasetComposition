@@ -6,13 +6,13 @@ def save_img(path, frame):
 
 def parse_args():
     """Parse input arguments."""
-    parser = argparse.ArgumentParser(description='Faster R-CNN demo')
+    parser = argparse.ArgumentParser(description='Crop a single video with changing strides')
     parser.add_argument('--video', dest='name', help='target video path',
                         required=True)
     parser.add_argument('--stride', dest='stride', help='desired stride',
                         default=25, type=int)
-    parser.add_argument('--resume', dest='resume', help='desired stride',
-                        default=25, type=int)
+    parser.add_argument('--resume', dest='resume', help='start form which image stride needs to be changed',
+                        default=0, type=int)
     args = parser.parse_args()
 
     return args

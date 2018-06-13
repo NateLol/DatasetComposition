@@ -18,7 +18,7 @@ python3 python 2_rename_raw.py --root /path/to/video/root --listfile /path/to/li
 ```
 
 ## Rearrange folders
-`3_rmfile_new.py` will rearrange previous image folders of structure `cam-date-time` for easier labeling distribution to the structure of `date-lane-time-cam`
+`3_rmfile_new.py` will rearrange previous image folders of structure `cam-time` for easier labeling distribution to the structure of `date-lane-time-cam`
 ```sh
 python 3_rmfile_new.py --source /path/to/image/root --target /path/to/target/image/root
 ```
