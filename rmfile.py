@@ -1,7 +1,6 @@
 import os, glob, shutil,argparse
 
-root ='/media/jane/0a36d079-2c65-49f6-b9cd-2fed6b9d6f25/2018/0*'
-target='/media/jane/0a36d079-2c65-49f6-b9cd-2fed6b9d6f25/data5-11'
+
 
 def parse_args():
     """Parse input arguments."""

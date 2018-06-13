@@ -18,6 +18,7 @@ def parse_args():
 if __name__ == '__main__':
 	args = parse_args()
 	filepath = glob.glob(args.folder + '*.jpg')
+	
 	for file in filepath:
 		name = file.split('/')[-1]
 		number = name.split('.')[-2]
