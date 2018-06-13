@@ -50,6 +50,7 @@ python rmfile.py --source /path/to/image/root --target /path/to/target/image/roo
 `demo_batch_new.py` will traverse all images under `image` and create xml files storing all results accordingly.
 ```sh
 cd $Faster-RCNN$/tools
+source activate fasterrcnn
 python demo_batch_new.py --model ../model/VGGnet_fast_rcnn_iter_70000.ckpt --image /path/to/target/image/root 
 ```
 
