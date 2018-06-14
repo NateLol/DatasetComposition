@@ -7,7 +7,7 @@ def save_img(path, frame):
 def parse_args():
     """Parse input arguments."""
     parser = argparse.ArgumentParser(description='Crop a single video with a provided stride')
-    parser.add_argument('--path', dest='name', help='target video path',
+    parser.add_argument('--video', dest='name', help='target video path',
                         required=True)
     parser.add_argument('--stride', dest='stride', help='desired stride',
                         default=1, type=int)
