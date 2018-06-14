@@ -16,13 +16,11 @@ def parse_args():
     return args
 
 
-if __name__ == '__main__':
-    args = parse_args()
-
+def main(name, stride):
     (major_ver, minor_ver, subminor_ver) = cv2.__version__.split('.')
     fps=0
     frames=0
-    video = cv2.VideoCapture(args.name)
+    video = cv2.VideoCapture(name)
     if int(major_ver) < 3:
         fps = video.get(cv2.cv.CV_CAP_PROP_FPS)
         frames = video.get(cv2.cv.CV_CAP_PROP_FRAME_COUNT)
@@ -35,17 +33,24 @@ if __name__ == '__main__':
     timestart=time.time()
     rval = True
     c=0
-    folder = args.name.split('.')[-2]
+    folder = name.split('.')[-2]
     print(folder)
     if not os.path.exists(folder):
         os.mkdir(folder)
     while rval:
         rval, frame = video.read()
-        if c % args.stride == 0:
-            path = os.path.join(folder, '{:06d}'.format(int(c / args.stride)) + '.jpg')
+        if c % stride == 0:
+            path = os.path.join(folder, '{:06d}'.format(int(c / stride)) + '.jpg')
             thread=threading.Thread(target=save_img, args=(path, frame))
             thread.start()
         c = c + 1
     timestop = time.time()
     print(timestop-timestart)
     video.release()
+
+
+if __name__ == '__main__':
+    args = parse_args()
+    main(args.name, args.stride)
+
+    
