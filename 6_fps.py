@@ -41,8 +41,9 @@ def main(name, stride):
         rval, frame = video.read()
         if c % stride == 0:
             path = os.path.join(folder, '{:06d}'.format(int(c / stride)) + '.jpg')
-            thread=threading.Thread(target=save_img, args=(path, frame))
-            thread.start()
+            save_img(path, frame)
+            #thread=threading.Thread(target=save_img, args=(path, frame))
+            #thread.start()
         c = c + 1
     timestop = time.time()
     print(timestop-timestart)
