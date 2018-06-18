@@ -16,7 +16,7 @@ def find_file(args, dirname, files):
     files.sort()
     if len(files) != 0 and 'jpg' in files[0]:
         with open(args,'a') as f:
-            f.write('{} has {} images\n'.format(dirname, len(files)))
+            f.write('{} has {} images\n'.format(dirname, len(glob.glob(os.path.join(dirname,'*.jpg')))))
 
 
 def main(image, file):
