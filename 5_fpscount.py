@@ -13,7 +13,8 @@ def parse_args():
 
 
 def find_file(args, dirname, files):
-    if len(files) != 0 and '.' in files[0]:
+    files.sort()
+    if len(files) != 0 and 'jpg' in files[0]:
         with open(args,'a') as f:
             f.write('{} has {} images\n'.format(dirname, len(files)))
 
