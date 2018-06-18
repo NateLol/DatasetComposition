@@ -11,14 +11,15 @@ def parse_args():
                         required=True)
     parser.add_argument('--stride', dest='stride', help='desired stride',
                         default=25, type=int)
-    parser.add_argument('--resume', dest='resume', help='start form which image stride needs to be changed',
-                        default=0, type=int)
+    parser.add_argument('--folder', dest='folder', help='image folder',
+                        default="")
+    parser.add_argument('--resume', dest='resume', help='start form which image stride needs to be changed', default=0, type=int)
     args = parser.parse_args()
 
     return args
 
 
-def main(name, resume, stride=25):
+def main(name, folder, resume, stride=25):
     (major_ver, minor_ver, subminor_ver) = cv2.__version__.split('.')
     video = cv2.VideoCapture(os.path.join('./', name))
     if int(major_ver) < 3:
@@ -33,7 +34,8 @@ def main(name, resume, stride=25):
     timestart=time.time()
     rval = True
     c=0
-    folder = name.split('.')[-2]
+    if folder == "":
+        folder = name.split('.')[-2]
     print(folder)
     if not os.path.exists(folder):
         os.mkdir(folder)
@@ -54,4 +56,4 @@ def main(name, resume, stride=25):
 
 if __name__ == '__main__':
     args = parse_args()
-    main(args.name, args.resume)
+    main(args.name,args.folder, args.resume)

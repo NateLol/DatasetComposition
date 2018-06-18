@@ -28,9 +28,9 @@ else
 fi
 
 if [ "$resume" == "" ]; then
-	python 6_fps.py --video "$target" --stride 1
+	python 6_fps.py --video "$target" --folder "$path" --stride 1
 else
-	python 7_fps_part.py --video "$target" --resume $resume
+	python 7_fps_part.py --video "$target" --folder "$path" --resume $resume
 fi
 
 done
