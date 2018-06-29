@@ -32,7 +32,7 @@ if __name__ =='__main__':
                 cam = name.split('_')[0]
                 num = dict.get(cam,0)
                 dict[cam] = num+1
-            print(folder)
+            #print(folder)
             f.write('\n'+folder.split(sep)[-1]+': \t{}\t{}'.format(len(ims),len(dict.keys())))
 
             for key in dict.keys():
