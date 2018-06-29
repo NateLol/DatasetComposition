@@ -18,18 +18,22 @@ if __name__ =='__main__':
     for folder in folders:
         if not os.path.isdir(folder):
             continue
-        ims = glob.glob(folder+'\\*.jpg')
+        if '\\' in folder:	
+            sep = '\\'
+        else:
+            sep = '/'
+        ims= glob.glob(folder+'{}*.jpg'.format(sep))
         dict = {}
         dict1 = {}
         with open(target, 'a') as f:
             
             for im in ims:
-                name = im.split('\\')[-1]
+                name = im.split(sep)[-1]
                 cam = name.split('_')[0]
                 num = dict.get(cam,0)
                 dict[cam] = num+1
 
-            f.write('\n'+folder.split('\\')[-1]+': \t{}\t{}'.format(len(ims),len(dict.keys())))
+            f.write('\n'+folder.split(sep)[-1]+': \t{}\t{}'.format(len(ims),len(dict.keys())))
 
             for key in dict.keys():
                 f.write('\t{}\t{}'.format(key, dict[key]))

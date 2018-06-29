@@ -19,8 +19,6 @@ if __name__ == '__main__':
             continue
 
         date = pdate.split('/')[-1]
-        if int(date) > 404:
-            continue
         pcams = glob.glob(os.path.join(pdate, 'L*'))
         pcams.sort()
         for pcam in pcams:
