@@ -32,7 +32,7 @@ if __name__ =='__main__':
                 cam = name.split('_')[0]
                 num = dict.get(cam,0)
                 dict[cam] = num+1
-
+            print(folder)
             f.write('\n'+folder.split(sep)[-1]+': \t{}\t{}'.format(len(ims),len(dict.keys())))
 
             for key in dict.keys():
@@ -45,11 +45,11 @@ if __name__ =='__main__':
                     if line.rstrip() == '':
                         continue
                     id = line.split('\t')[0]
-                    print(id)
+                    #print(id)
                     num = line.split('\t')[1]
-                    print(num)
+                    #print(num)
                     cams = int(line.split('\t')[2])
-                    print(cams)
+                    #print(cams)
                     num = dict1.get(cams,0)
                     dict1[cams] = num + 1
 

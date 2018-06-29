@@ -27,13 +27,12 @@ def cutout(xml_name, id, folderpath):
     tree = etree.parse(xml_name)
     path = tree.find('path').text
     if '/' in path:
-        cam = path.split('/')[-3]
-        date = path.split('/')[-2]
-        image = path.split('/')[-1]
+        sep = '/'
     else:
-        cam = path.split('\\')[-3]
-        date = path.split('\\')[-2]
-        image = path.split('\\')[-1]
+        sep = '\\'
+    cam = path.split(sep)[-3]
+    date = path.split(sep)[-2]
+    image = path.split(sep)[-1]
     objects = tree.findall('object')
     for object in objects:
         name = object.find('name').text
@@ -48,7 +47,7 @@ def cutout(xml_name, id, folderpath):
         id_folder = os.path.join(folderpath, name)
         if not os.path.exists(id_folder):
             os.mkdir(id_folder)
-        index = len(glob.glob(id_folder+'/*jpg'))
+        index = len(glob.glob(id_folder+'{}*jpg'.format(sep)))
         filename = os.path.join(id_folder, '{}_{}_{}_{:03d}.jpg'.format(cam, date, image.split('.')[0], index))
         cv2.imwrite(filename, im_tmp)
 #    cutting(im, shapes, 'test')
